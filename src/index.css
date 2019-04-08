@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #fc9c6b;
+    font-size: 20px;
+}
+
+.fa-heart{
+    color: rgb(214, 0, 0);
+}
+.fa-sun {
+    color: gold;
+}
+
+.fa-gem{
+    color:skyblue;
+}
+
+.fa-handshake{
+    color: #3a5f3a;
+}
+
+.fa-gift{
+    color: rgb(224, 31, 105);
+}
+
+.fa-cross{
+    color: #642b08;
+}
