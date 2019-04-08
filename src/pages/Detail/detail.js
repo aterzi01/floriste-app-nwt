@@ -8,18 +8,20 @@ class Detail extends Component {
       <div className={styles.Container}>
         <div className={styles.DetailPhoto}><img src={Photo}></img></div>
         <div className={styles.DetailAside}>
-            <div className={styles.AsideHeader}></div>
-            <div className={styles.Description}></div>
-            <div className={styles.Size}>
+          <div className={styles.AsideHeader}>cvijet</div>
+          <div className={styles.Description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non odio quis ligula pellentesque ultrices.
+          Aliquam erat volutpat. Aliquam eu placerat nisl. Curabitur pretium vitae neque in faucibus. Duis ornare in lacus in accumsan.
+            In sodales, quam ac blandit ultrices, sapien tellus ultricies nunc, at lobortis nisl ligula eget turpis</div>
+          <div className={styles.Size}>
             <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
             </select>
-  
-            </div>
-            <i className="fas fa-shopping-cart"></i>       
+            <i className="fas fa-shopping-cart"></i>
+          </div>
+
         </div>
       </div>
     );

@@ -1,0 +1,55 @@
+.Container {
+    width: 80%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.DetailPhoto, .DetailPhoto img{
+    width: 98%;
+    margin: 0 auto;
+}
+
+
+.Description{
+    font-size: 15px;
+    text-align: justify;
+    margin: 20px auto;
+}
+
+.AsideHeader{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.Size{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+select{
+    width: 20%;
+    height: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+}
+option{
+    height: 25px;
+    font-size: 15px;
+}
+
+.Size i{
+    background-color:white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.Size i:hover{
+    color: #fc9c6b;
+}
