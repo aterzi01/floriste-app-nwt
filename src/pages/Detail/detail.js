@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 import styles from './styles.module.css';
-import Photo from '../../assets/img/all.jpg';
-
+import Photo from '../../assets/img/xxyy.jpg';
+import Photo1 from '../../assets/img/all.jpg';
+import Photo2 from '../../assets/img/main.jpg';
+import Photo3 from '../../assets/img/today.jpg';
 class Detail extends Component {
+
+  changeThumb(img) {
+    var expandImg = document.getElementById("expandImg");
+    expandImg.src = img;
+  }
+
   render() {
     return (
       <div className={styles.Container}>
-        <div className={styles.DetailPhoto}><img src={Photo}></img></div>
+        <div id="style-2" className={styles.ThumbColumn}>
+          <div className={styles.Thumb}>
+            <img src={Photo} alt="Nature" onClick={() => this.changeThumb(Photo)} />
+          </div>
+          <div className={styles.Thumb}>
+            <img src={Photo1} alt="Snow" onClick={() => this.changeThumb(Photo1)} />
+          </div>
+          <div className={styles.Thumb}>
+            <img src={Photo2} alt="Mountains" onClick={() => this.changeThumb(Photo2)} />
+          </div>
+          <div className={styles.Thumb}>
+            <img src={Photo3} alt="Lights" onClick={() => this.changeThumb(Photo3)} />
+          </div>
+        </div>
+        <div className={styles.DetailPhoto}><img id="expandImg" src={Photo}></img></div>
         <div className={styles.DetailAside}>
           <div className={styles.AsideHeader}>cvijet</div>
           <div className={styles.Description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non odio quis ligula pellentesque ultrices.
@@ -19,7 +41,7 @@ class Detail extends Component {
               <option value="L">L</option>
               <option value="XL">XL</option>
             </select>
-            <i className="fas fa-shopping-cart"></i>
+            <button className={styles.AddBtn}><b>Dodaj u košaricu</b> <i className="fas fa-shopping-cart"></i></button>
           </div>
 
         </div>

@@ -1,13 +1,20 @@
 .Container {
-    width: 80%;
-    margin: 20px auto;
+    padding: 50px 10%;
+    margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 6fr 3fr;
+    background-color: rgb(211, 211, 211);
+    border-bottom: 3px solid white;
 }
 
-.DetailPhoto, .DetailPhoto img{
-    width: 98%;
-    margin: 0 auto;
+.DetailPhoto{
+    padding: 0 20px;
+}
+
+.DetailPhoto img{
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 
@@ -20,36 +27,72 @@
 .AsideHeader{
     text-transform: uppercase;
     font-weight: bold;
-    color: white;
-    text-align: center;
-}
-
-.Size{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    color: black;
+    font-size: 25px;
+ 
 }
 
 select{
-    width: 20%;
-    height: 25px;
+    width: 100%;
+    height: 30px;
     font-size: 15px;
     cursor: pointer;
     border: none;
+   border-radius: 10px;
+   padding: 3px;
+   font-weight: bold;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 option{
-    height: 25px;
+    height: 30px;
     font-size: 15px;
 }
 
-.Size i{
+.Size>* {
+    margin-bottom: 15px;
+}
+
+.AddBtn{
     background-color:white;
-    padding: 10px;
-    border-radius: 50%;
+    width: 100%;
+    padding: 3px 6px;
+    border: none;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    display: flex;
+    justify-content: space-between;
+ }
+
+.AddBtn:hover{
+    color: #fc9c6b;
+}
+
+.Thumb img{
+    width: 100%;
     cursor: pointer;
 }
 
-.Size i:hover{
-    color: #fc9c6b;
+.ThumbColumn {
+    height: 600px;
+    overflow: auto;
+    padding-right: 5px;
 }
+
+ .ThumbColumn::-webkit-scrollbar {
+     width: 15px;
+ }
+ 
+ .ThumbColumn::-webkit-scrollbar-track {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+
+ }
+ 
+ .ThumbColumn::-webkit-scrollbar-thumb {
+    background-color: white;
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+ }
+
