@@ -13,19 +13,22 @@
 
 .headerNav {
     font-size: 25px;
+    display: flex;
+    align-items: center;
 }
 
-.headerNav a{
+.HeaderLink{
     text-decoration-line: none;
     font-size: 20px;
     margin: 2px 10px;
     color: black;
 }
 
-.headerNav a:hover {
+.HeaderLink:hover {
     color: #fc9c6b;
     padding: 2px 8px;
     margin: 0;
     border: 2px solid #fc9c6b;
     
 }
+

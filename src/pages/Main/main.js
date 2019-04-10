@@ -5,41 +5,46 @@ import mainphoto from '../../assets/img/all.jpg';
 import postphoto from '../../assets/img/yxxx.jpg';
 import Post from '../../components/Post/post';
 
-var i=0;
-var k=1;
-var list1 = [], list2=[], list3=[];
+var i = 0;
+var k = 1;
+var list1 = [], list2 = [], list3 = [];
 
 class Main extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-        page: ''
+      page: ''
     };
- }
+  }
 
-  componentWillMount(){    
-    this.setState ({
-        page: this.props.match.params.id
+  // componentWillMount() {
+  //   this.setState({
+  //     page: this.props.match.params.id
+  //   });
+
+  componentDidMount() {
+    this.setState({
+      page: this.props.match.params.id
     });
 
-    
-    for(i=0;i<15;i++){
-      if(k==1)
-      { 
+
+
+    for (i = 0; i < 15; i++) {
+      if (k == 1) {
         list1.push(<Post img={mainphoto}></Post>)
         k++;
       }
-      else if(k==2){
+      else if (k == 2) {
         list2.push(<Post img={postphoto}></Post>)
         k++;
       }
-      else if(k==3){
+      else if (k == 3) {
         list3.push(<Post img={mainphoto}></Post>)
-        k=1;
+        k = 1;
       }
     }
-  } 
+  }
 
 
   render() {

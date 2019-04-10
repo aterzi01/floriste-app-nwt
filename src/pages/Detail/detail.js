@@ -41,7 +41,7 @@ class Detail extends Component {
               <option value="L">L</option>
               <option value="XL">XL</option>
             </select>
-            <button className={styles.AddBtn}><b>Dodaj u košaricu</b> <i className="fas fa-shopping-cart"></i></button>
+            <button className={styles.AddBtn}>Dodaj u košaricu</button>
           </div>
 
         </div>
