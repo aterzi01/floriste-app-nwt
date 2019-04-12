@@ -12,7 +12,7 @@ class Header extends Component {
         <div className={styles.headerLogo}><Link to='/'><img src={Logo}></img></Link></div>
         <div className={styles.headerNav}>
           <div className="dropdown">
-            <Link className="dropbtn">Katalog</Link>
+            <Link to="/" className="dropbtn">Katalog</Link>
             <div className="dropdownContent">
               <Link to='/katalog/čestitke'>Čestitke</Link>
               <Link to='/katalog/godišnjica'>Godišnjica</Link>

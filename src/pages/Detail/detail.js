@@ -16,21 +16,21 @@ class Detail extends Component {
       <div className={styles.Container}>
         <div className={styles.ThumbColumn}>
           <div className={styles.Thumb}>
-            <img src={Photo} alt="Nature" onClick={() => this.changeThumb(Photo)} />
+            <img src={Photo} alt="flower" onClick={() => this.changeThumb(Photo)} />
           </div>
           <div className={styles.Thumb}>
-            <img src={Photo1} alt="Snow" onClick={() => this.changeThumb(Photo1)} />
+            <img src={Photo1} alt="flower" onClick={() => this.changeThumb(Photo1)} />
           </div>
           <div className={styles.Thumb}>
-            <img src={Photo2} alt="Mountains" onClick={() => this.changeThumb(Photo2)} />
+            <img src={Photo2} alt="flower" onClick={() => this.changeThumb(Photo2)} />
           </div>
           <div className={styles.Thumb}>
-            <img src={Photo3} alt="Lights" onClick={() => this.changeThumb(Photo3)} />
+            <img src={Photo3} alt="flower" onClick={() => this.changeThumb(Photo3)} />
           </div>
         </div>
         <div className={styles.DetailPhoto}><img id="expandImg" src={Photo}></img></div>
         <div className={styles.DetailAside}>
-          <div className={styles.AsideHeader}>cvijet</div>
+          <div className={styles.AsideHeader}>{this.props.match.params.flowerID}</div>
           <div className={styles.Description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non odio quis ligula pellentesque ultrices.
           Aliquam erat volutpat. Aliquam eu placerat nisl. Curabitur pretium vitae neque in faucibus. Duis ornare in lacus in accumsan.
             In sodales, quam ac blandit ultrices, sapien tellus ultricies nunc, at lobortis nisl ligula eget turpis</div>

@@ -11,12 +11,12 @@ class Post extends Component {
             <div className={styles.container}>
                 <img className={styles.image} src={this.props.img}/>
                 <div className={styles.middle}>
-                    <Link to='/buket/cvijet' className={styles.text}>KUPI</Link>
+                    <Link to={"/buket/"+this.props.flower} className={styles.text}>KUPI</Link>
                 </div>
                 
             </div>
             <div className={styles.Price}>
-                <p>Cvijet</p>
+                <p>{this.props.flower}</p>
                 <p>100kn</p>
             </div>
         </div>

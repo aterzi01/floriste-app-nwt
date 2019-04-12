@@ -14,8 +14,8 @@ class App extends Component {
           <Header></Header>
         </div>
         <Route exact path="/" component={Home} />
-        <Route exact path="/katalog/:id" component={Main} />
-        <Route exact path="/buket/cvijet" component={Detail} />
+        <Route exact path="/katalog/:id" render={props => <Main {...props} />}/>
+        <Route exact path="/buket/:flowerID" render={props => <Detail {...props} />} />
         <Footer></Footer>
       </BrowserRouter>
     );
