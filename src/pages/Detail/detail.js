@@ -14,7 +14,7 @@ class Detail extends Component {
   render() {
     return (
       <div className={styles.Container}>
-        <div id="style-2" className={styles.ThumbColumn}>
+        <div className={styles.ThumbColumn}>
           <div className={styles.Thumb}>
             <img src={Photo} alt="Nature" onClick={() => this.changeThumb(Photo)} />
           </div>

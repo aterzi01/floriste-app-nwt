@@ -5,14 +5,12 @@ import Logo from './logo.png';
 import Footer from '../Footer/footer';
 
 class Header extends Component {
-
   render() {
 
     return (
       <div className={styles.Header}>
         <div className={styles.headerLogo}><Link to='/'><img src={Logo}></img></Link></div>
         <div className={styles.headerNav}>
-          {/* <Link to="/">Katalog</Link>| */}
           <div className="dropdown">
             <Link className="dropbtn">Katalog</Link>
             <div className="dropdownContent">
@@ -25,9 +23,9 @@ class Header extends Component {
             </div>
           </div>|
           <Link className={styles.HeaderLink} to="/">Složi sam</Link>|
-            <Link className={styles.HeaderLink} to="/aboutus">O nama</Link>|
-            <Link className={styles.HeaderLink} to="/"><i className="fas fa-user-circle"></i></Link>|
-            <Link className={styles.HeaderLink} to="/"><i className="fas fa-shopping-cart"></i></Link>
+          <Link className={styles.HeaderLink} to="/aboutus">O nama</Link>|
+          <Link className={styles.HeaderLink} to="/"><i className="fas fa-user-circle"></i></Link>|
+          <Link className={styles.HeaderLink} to="/"><i className="fas fa-shopping-cart"></i></Link>
         </div>
       </div>
     );

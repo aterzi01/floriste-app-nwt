@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 import mainphoto from '../../assets/img/all.jpg';
 import postphoto from '../../assets/img/yxxx.jpg';
@@ -10,7 +9,6 @@ var k = 1;
 var list1 = [], list2 = [], list3 = [];
 
 class Main extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -18,41 +16,29 @@ class Main extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   this.setState({
-  //     page: this.props.match.params.id
-  //   });
-
-  componentDidMount() {
-    this.setState({
-      page: this.props.match.params.id
-    });
-
-
-
+  componentWillMount() {    
     for (i = 0; i < 15; i++) {
-      if (k == 1) {
+      if (k === 1) {
         list1.push(<Post img={mainphoto}></Post>)
         k++;
       }
-      else if (k == 2) {
+      else if (k === 2) {
         list2.push(<Post img={postphoto}></Post>)
         k++;
       }
-      else if (k == 3) {
+      else if (k === 3) {
         list3.push(<Post img={mainphoto}></Post>)
         k = 1;
       }
     }
   }
 
-
   render() {
     return (
       <div className={styles.Container}>
         <div className={styles.MainPhoto}>
           <img src={mainphoto}></img>
-          <h2 className={styles.PageTitle}>{this.state.page}</h2>
+          <h2  key={this.state.page+"page"} className={styles.PageTitle}>{this.props.match.params.id}</h2>
         </div>
         <div className={styles.Main}>
           <div className={styles.PhotoColumn}>

@@ -9,6 +9,11 @@
 .headerLogo img{
     width: 250px;
     padding-left: 10px;
+    transition: transform .2s;
+}
+
+.headerLogo img:hover{
+    transform: scale(1.1);
 }
 
 .headerNav {
