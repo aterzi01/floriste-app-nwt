@@ -45,27 +45,27 @@ class Main extends Component {
         page: currentPage
       });
 
-      list1=[];
-      list2=[];
-      list3=[];
+      list1 = [];
+      list2 = [];
+      list3 = [];
 
       for (i = 0; i < 15; i++) {
         if (k === 1) {
-          if(currentPage==="sahrana")
+          if (currentPage === "sahrana")
             list1.push(<Post img={mainphoto} flower={currentPage}></Post>);
           else
             list1.push(<Post img={postphoto} flower={currentPage}></Post>);
           k++;
         }
         else if (k === 2) {
-          if(currentPage==="godišnjica")
+          if (currentPage === "godišnjica")
             list2.push(<Post img={mainphoto} flower={currentPage}></Post>);
           else
             list2.push(<Post img={postphoto} flower={currentPage}></Post>);
           k++;
         }
         else if (k === 3) {
-          if(currentPage==="zadnji tren")
+          if (currentPage === "zadnji tren")
             list3.push(<Post img={mainphoto} flower={currentPage}></Post>);
           else
             list3.push(<Post img={postphoto} flower={currentPage}></Post>);
@@ -74,12 +74,12 @@ class Main extends Component {
       }
     }
 
-   
+
   }
 
   render() {
     return (
-      <div key={this.props.match.params.id+"page"} className={styles.Container}>
+      <div key={this.props.match.params.id + "page"} className={styles.Container}>
         <div className={styles.MainPhoto}>
           <img src={mainphoto}></img>
           <h2 className={styles.PageTitle}>{this.state.page}</h2>

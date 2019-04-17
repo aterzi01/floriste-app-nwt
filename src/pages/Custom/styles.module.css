@@ -1,0 +1,35 @@
+
+.Container{
+    width: 100%;
+}
+
+.MainPhoto{
+    width: 100%;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.MainPhoto img{
+    width: 100%;
+    position: fixed;
+    top: -60px;
+    z-index: -1;
+}
+
+.cardForm {
+    text-transform: uppercase;
+    margin: 100px 0;
+    color: black;
+    background-color: rgba(255, 192, 203, 0.616);
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    
+}
+    select{
+        width: 20%;
+    }
+
+.OptionsForm {
+    display: none;
+}

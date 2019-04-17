@@ -22,7 +22,7 @@ class Header extends Component {
               <Link to='/katalog/sahrana'>Sahrana</Link>
             </div>
           </div>|
-          <Link className={styles.HeaderLink} to="/">Složi sam</Link>|
+          <Link className={styles.HeaderLink} to="/slozisam">Složi sam</Link>|
           <Link className={styles.HeaderLink} to="/aboutus">O nama</Link>|
           <Link className={styles.HeaderLink} to="/"><i className="fas fa-user-circle"></i></Link>|
           <Link className={styles.HeaderLink} to="/"><i className="fas fa-shopping-cart"></i></Link>
