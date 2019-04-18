@@ -14,7 +14,7 @@ class Footer extends Component {
                     Adresa: Generala Blage Zadre 14 <br/>
                     Mjesto: 21000 Split <br/>
                     Telefon: 021/123 456 <br/>
-                    Mobitel: 091 123 45 67 <br/>
+                    Mobitel: 091 123 45 68 <br/>
                     E-mail: fleuriste@fleuriste.hr
                     </p>
               </div>
