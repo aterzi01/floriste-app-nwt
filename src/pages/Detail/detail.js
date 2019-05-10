@@ -28,7 +28,7 @@ class Detail extends Component {
             <img src={Photo3} alt="flower" onClick={() => this.changeThumb(Photo3)} />
           </div>
         </div>
-        <div className={styles.DetailPhoto}><img id="expandImg" src={Photo}></img></div>
+        <div className={styles.DetailPhoto}><img id="expandImg" alt="photoThumb" src={Photo}></img></div>
         <div className={styles.DetailAside}>
           <div className={styles.AsideHeader}>{this.props.match.params.flowerID}</div>
           <div className={styles.Description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non odio quis ligula pellentesque ultrices.

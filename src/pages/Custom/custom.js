@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import styles from './styles.module.css';
 import mainphoto from '../../assets/img/custom.jpg';
 
@@ -59,7 +59,7 @@ class Custom extends Component {
         let form = document.getElementById("manyFlowerCount");
         console.log(e.target.type)
 
-        if (isChecked && e.target.type != "radio") {
+        if (isChecked && e.target.type !== "radio") {
             if (!form.querySelector("#" + ID)) {
                 let newDiv = document.createElement("div");
 
@@ -79,7 +79,7 @@ class Custom extends Component {
                 inputNumber.style.display = "block";
             }
         }
-        else if (!isChecked && e.target.type != "radio") {
+        else if (!isChecked && e.target.type !== "radio") {
             if (form.querySelector("#" + ID)) {
                 let inputNumber = form.querySelector("#" + ID).parentElement;
                 inputNumber.style.display = "none";
@@ -92,7 +92,7 @@ class Custom extends Component {
 
             <div className={styles.Container}>
                 <div className={styles.MainPhoto}>
-                    <img src={mainphoto}></img>
+                    <img alt="photoThumb" src={mainphoto}></img>
                     <div className={styles.cardForm}>
 
                         <h1>SLOŽI SVOJ BUKET</h1>

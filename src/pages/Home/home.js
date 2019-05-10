@@ -11,7 +11,7 @@ class Home extends Component {
       <div>
         <Link to='/katalog/buketi'>
           <div className={styles.MainPhoto}>        
-            <img src={mainphoto}></img>
+            <img alt="photoThumb" src={mainphoto}></img>
             <button className={styles.ShopNowBtn}>IZABERI BUKET</button>         
           </div>
         </Link>
@@ -60,13 +60,13 @@ class Home extends Component {
           <div className={styles.MinnieBlock}>
             <div>
               <Link to='/najpopularniji'>
-                <img src={popular}></img>
+                <img alt="photoThumb" src={popular}></img>
                 <button className={styles.ShopNowBtn}>NAJPOPULARNIJI</button>
               </Link>
             </div> 
             <div>
               <Link to='/ponuda tjedna'>
-                <img src={today}></img>
+                <img alt="photoThumb" src={today}></img>
                 <button className={styles.ShopNowBtn}>PONUDA TJEDNA</button>
               </Link>
             </div>

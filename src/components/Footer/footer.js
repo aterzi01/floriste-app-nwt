@@ -25,7 +25,7 @@ class Footer extends Component {
               </div>
               <div>
                   <h4>Lokacija</h4>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.570869583362!2d16.467000315454857!3d43.511286979126446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13355e3cbb175f2d%3A0x505534f00924e86!2sFakultet+elektrotehnike%2C+strojarstva+i+brodogradnje+u+Splitu!5e0!3m2!1shr!2shr!4v1553638250280"></iframe>
+                  <iframe title="ourMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.570869583362!2d16.467000315454857!3d43.511286979126446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13355e3cbb175f2d%3A0x505534f00924e86!2sFakultet+elektrotehnike%2C+strojarstva+i+brodogradnje+u+Splitu!5e0!3m2!1shr!2shr!4v1553638250280"></iframe>
               </div>
           </div>
           <p className={styles.Creators}>© Copyright 2019 - Ana Terzic & Ivona Ostojic</p>

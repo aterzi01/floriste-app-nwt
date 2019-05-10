@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 import Logo from './logo.png';
-import Footer from '../Footer/footer';
 
 class Header extends Component {
   render() {
 
     return (
       <div className={styles.Header}>
-        <div className={styles.headerLogo}><Link to='/'><img src={Logo}></img></Link></div>
+        <div className={styles.headerLogo}><Link to='/'><img alt="photoThumb" src={Logo}></img></Link></div>
         <div className={styles.headerNav}>
           <div className="dropdown">
             <Link to="/" className="dropbtn">Katalog</Link>

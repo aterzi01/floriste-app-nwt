@@ -81,7 +81,7 @@ class Main extends Component {
     return (
       <div key={this.props.match.params.id + "page"} className={styles.Container}>
         <div className={styles.MainPhoto}>
-          <img src={mainphoto}></img>
+          <img alt="photoThumb" src={mainphoto}></img>
           <h2 className={styles.PageTitle}>{this.state.page}</h2>
         </div>
         <div className={styles.Main}>
