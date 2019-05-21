@@ -3,90 +3,92 @@ import React, { Component } from 'react';
 import styles from './styles.module.css';
 import mainphoto from '../../assets/img/custom.jpg';
 
+var optionList = ["ruže", "tulipani", "orhideje", "tratinčice"];
 class Custom extends Component {
 
     constructor(props) {
         super(props);
+        // select = 'izaberi','jedna vrsta' ili 'razvnovrsno'
+        // optionList = lista elemenata opcija
         this.state = {
-            value: 'select'
+            select: 'select',
+            optionList: []
         }
     }
 
+    // funkcija se poziva kada u selectu mijenjamo izbor "jedna vrsta" cvijeta ili "raznovrsno"
     handleOption(e) {
-        this.setState({
-            value: e.target.value
-        });
 
+        //chooseOption je opcija "izaberi" koju nakon prvog biranja izbora više nećemo vidjeti
         document.getElementById("chooseOption").style.display = "none";
+
+        // postavljamo po defaultu da je unos kolicine nevidljiv
         document.getElementById("oneFlowerCount").style.display = "none";
-        let manyDiv = document.getElementById("manyFlowerCount");
-        manyDiv.style.display = "none";
-        for (let i of manyDiv.querySelectorAll("div")) {
-            i.style.display = "none";
-        }
 
-        if (e.target.value === "many") {
-            let form = document.getElementById("optionsForm");
-            form.style.display = "block";
-            let inputs = form.querySelectorAll(".flowerCheck");
-            for (let i of inputs) {
-                i.type = "checkbox";
-                i.checked = false;
+        // ako je izabrana opcija "jedna vrsta" ili "raznovrsno" ulazimo u if
+        if (e.target.value !== "select") {
+            // prikazujemo kontejner za ponuđene opcije 
+            document.getElementById("optionsForm").style.display = "block";
+            //niz u koji cemo spremiti listu html elemenata opcija
+            var makeOptionList = [];
 
+            // ako je izabrana opcija 'raznovrsno'
+            if (e.target.value === "many") {
+                //pomocu map funkcije ( optionList = popis cvijeca ) stvaramo element za svaku opciju (tj cvijet)
+                makeOptionList = optionList.map(option =>
+                    // bitno je da svaki element liste ima jedinstveni kljuc (key)
+                    // checkbox = moguce je odabrati samo vise cvjetova 
+                    <div id={option + "ID"} key={option + "Key1"}>
+                        <b>
+                            <input className="flowerCheck" value={option} name="flowerCheck"
+                                type="checkbox" onChange={this.handleFlowerNumber} />
+                            {option}
+                        </b>
+                        <span className={styles.inputCounterSpan}> <input type="number" defaultValue="0"></input></span>
+                    </div>
+                )
             }
-            manyDiv.style.display = "block";
-        }
-        else if (e.target.value === "one") {
-            let form = document.getElementById("optionsForm");
-            form.style.display = "block";
-            let inputs = form.querySelectorAll(".flowerCheck");
-            for (let i of inputs) {
-                i.type = "radio";
-                i.checked = false;
-
+            // ako je izabrana opcija 'jedna vrsta'
+            else if (e.target.value === "one") {
+                //pomocu map funkcije ( optionList = popis cvijeca ) stvaramo element za svaku opciju (tj cvijet)
+                makeOptionList = optionList.map(option =>
+                    // bitno je da svaki element liste ima jedinstveni kljuc (key)
+                    // radio button = moguce je odabrati samo jedan cvijet 
+                    <div key={option + "Key2"}>
+                        <b>
+                            <input className="flowerCheck" value={option} name="flowerCheck"
+                                type="radio" onChange={this.handleFlowerNumber} />
+                            {option}
+                        </b>
+                    </div>
+                )
+                //prikazujemo kontejner koji sadrzi input za kolicinu
+                document.getElementById("oneFlowerCount").style.display = "block";
             }
-            document.getElementById("oneFlowerCount").style.display = "block";
         }
+        // ako je jos uvijek opcija 'izaberi', sakrivamo kontejner s opcijama
         else {
-            let form = document.getElementById("optionsForm");
-            form.style.display = "none";
+            document.getElementById("optionsForm").style.display = "none";
         }
+
+        // update stanja
+        this.setState({
+            select: e.target.value,
+            optionList: makeOptionList
+        });
     }
 
+    // funkcija koja sluzi za prikazivanje inputa za unos kolicine zeljene vrste cvijeca
     handleFlowerNumber(e) {
+        //provjeravamo je li označen radio/checkbox
         let isChecked = e.target.checked;
-        let ID = e.target.value + "ID";
-        let form = document.getElementById("manyFlowerCount");
-        console.log(e.target.type)
-
-        if (isChecked && e.target.type !== "radio") {
-            if (!form.querySelector("#" + ID)) {
-                let newDiv = document.createElement("div");
-
-                let textnode = document.createTextNode("Količina (" + e.target.value + ")");
-                newDiv.appendChild(textnode);
-
-                let inputNumber = document.createElement("input");
-                inputNumber.type = "number";
-                inputNumber.defaultValue = "0";
-                inputNumber.id = ID;
-                newDiv.appendChild(inputNumber);
-
-                form.appendChild(newDiv);
-            }
-            else {
-                let inputNumber = form.querySelector("#" + ID).parentElement;
-                inputNumber.style.display = "block";
-            }
-        }
-        else if (!isChecked && e.target.type !== "radio") {
-            if (form.querySelector("#" + ID)) {
-                let inputNumber = form.querySelector("#" + ID).parentElement;
-                inputNumber.style.display = "none";
-            }
-        }
-
+        //samo ukoliko se radi o checkboxu otkrivamo input za unos kolicine pojedine vrste cvijeta
+        if (isChecked && e.target.type !== "radio")
+            document.getElementById(e.target.value + "ID").querySelector("span").style.display = "inline";
+        else if (!isChecked && e.target.type !== "radio")
+            document.getElementById(e.target.value + "ID").querySelector("span").style.display = "none";
     }
+
     render() {
         return (
 
@@ -98,26 +100,20 @@ class Custom extends Component {
                         <h1>SLOŽI SVOJ BUKET</h1>
 
                         <h4>OPCIJA:</h4>
-                        <select onChange={this.handleOption.bind(this)} value={this.state.value}>
+                        <select onChange={this.handleOption.bind(this)} value={this.state.select}>
                             <option id="chooseOption" value="select">Izaberi</option>
                             <option value="one">Jedna vrsta</option>
                             <option value="many" >Raznovrsno</option>
-
-
                         </select>
-                        <form id="optionsForm" className={styles.OptionsForm}>
-                            <input className="flowerCheck" value="ruze" name="flowerCheck" type="" onChange={this.handleFlowerNumber} />Ruže
-                            <input className="flowerCheck" value="tulipani" name="flowerCheck" type="" onChange={this.handleFlowerNumber} />Tulipani
-                            <input className="flowerCheck" value="orhideje" name="flowerCheck" type="" onChange={this.handleFlowerNumber} />Orhideje
-                            <input className="flowerCheck" value="tratincice" name="flowerCheck" type="" onChange={this.handleFlowerNumber} />Tratinčice
 
-                            <div id="oneFlowerCount" className={styles.oneFlowerCount}>
+                        <form id="optionsForm" className={styles.OptionsForm}>
+                            <div className={styles.OptionsList}>
+                                {this.state.optionList}
+                            </div>
+                            <div key="oneCountKey" id="oneFlowerCount" className={styles.oneFlowerCount}>
                                 Količina: <input type="number" defaultValue="0"></input>
                             </div>
-
-                            <div id="manyFlowerCount" className={styles.manyFlowerCount}>
-
-                            </div>
+                            <button className={styles.ShopNowBtn}>NARUČI</button>
                         </form>
                     </div>
                 </div>
