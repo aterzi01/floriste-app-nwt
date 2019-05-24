@@ -4,6 +4,8 @@ import styles from './styles.module.css';
 import mainphoto from '../../assets/img/custom.jpg';
 
 var optionList = ["ruže", "tulipani", "orhideje", "tratinčice"];
+var arrayOfPrices;
+
 class Custom extends Component {
 
     constructor(props) {
@@ -12,12 +14,14 @@ class Custom extends Component {
         // optionList = lista elemenata opcija
         this.state = {
             select: 'select',
-            optionList: []
+            optionList: [],
+            price: 0
         }
     }
 
     // funkcija se poziva kada u selectu mijenjamo izbor "jedna vrsta" cvijeta ili "raznovrsno"
     handleOption(e) {
+        this.resetValue();
 
         //chooseOption je opcija "izaberi" koju nakon prvog biranja izbora više nećemo vidjeti
         document.getElementById("chooseOption").style.display = "none";
@@ -41,10 +45,10 @@ class Custom extends Component {
                     <div id={option + "ID"} key={option + "Key1"}>
                         <b>
                             <input className="flowerCheck" value={option} name="flowerCheck"
-                                type="checkbox" onChange={this.handleFlowerNumber} />
+                                type="checkbox" onChange={this.handleFlowerNumber.bind(this)} />
                             {option}
                         </b>
-                        <span className={styles.inputCounterSpan}> <input type="number" defaultValue="0"></input></span>
+                        <span className={styles.inputCounterSpan}> <input type="number" defaultValue="0"  onChange={this.handlePrice.bind(this)}></input></span>
                     </div>
                 )
             }
@@ -57,7 +61,7 @@ class Custom extends Component {
                     <div key={option + "Key2"}>
                         <b>
                             <input className="flowerCheck" value={option} name="flowerCheck"
-                                type="radio" onChange={this.handleFlowerNumber} />
+                                type="radio" onChange={this.resetValue.bind(this)}/>
                             {option}
                         </b>
                     </div>
@@ -85,8 +89,58 @@ class Custom extends Component {
         //samo ukoliko se radi o checkboxu otkrivamo input za unos kolicine pojedine vrste cvijeta
         if (isChecked && e.target.type !== "radio")
             document.getElementById(e.target.value + "ID").querySelector("span").style.display = "inline";
-        else if (!isChecked && e.target.type !== "radio")
+        // ukoliko odznacimo checkbox
+        else if (!isChecked && e.target.type !== "radio"){
             document.getElementById(e.target.value + "ID").querySelector("span").style.display = "none";
+            // ako odznacimo tu vrstu, njezina se vrijednost vraca na kolicina = 0
+            document.getElementById(e.target.value + "ID").querySelector("span input").value = 0;
+            // u nizu vrsta/cijena pronademo taj cvijet i vratimo mu cijenu na 0kn ( izracunamo nanovo i ukupnu cijenu )
+            let newPrice = 0;
+            for(let i in arrayOfPrices){                
+                if(e.target.value === arrayOfPrices[i].id){
+                    arrayOfPrices[i].price=0;                    
+                } 
+                newPrice +=arrayOfPrices[i].price;
+            }
+            this.setState({
+                price: newPrice
+            });
+        }        
+            
+    }
+
+    // funkcija koja sluzi za racunanje ukupne cijene buketa
+    handlePrice(e){  
+        // ukoliko imamo samo jednu vrstu cvijeta
+        if(e.target.parentElement===document.getElementById("oneFlowerCount")){
+            this.setState({
+                price: e.target.value*15
+            });
+        }
+        // ako imamo vise razlicitih vrsta
+        else{           
+            let newPrice = 0; 
+            // prolazimo kroz listu svih vrsta cvjetova, ako naidemo na taj koji smo povecali, povecamo njegovu cijenu i zbrojimo s ostalim 
+            // cijenama ( od ostalih vrsta ako su izabrane )
+            for(let i in arrayOfPrices){                
+                if(e.target.parentElement.parentElement===document.getElementById(arrayOfPrices[i].id+"ID")){
+                    arrayOfPrices[i].price=e.target.value*15;                    
+                }                      
+                newPrice += arrayOfPrices[i].price;       
+                this.setState({
+                    price: newPrice
+                }); 
+            }
+        }
+    }
+
+    // funkcija koja vraca pocetne vrijednosti cijena na 0kn i jednoj vrsti kolicinu na 0
+    resetValue(){    
+        this.setState({
+            price: 0
+        });        
+        arrayOfPrices = optionList.map(option => ({"id": option, price: 0}));
+        document.getElementById("oneFlowerCount").querySelector("input").value = 0;
     }
 
     render() {
@@ -111,7 +165,10 @@ class Custom extends Component {
                                 {this.state.optionList}
                             </div>
                             <div key="oneCountKey" id="oneFlowerCount" className={styles.oneFlowerCount}>
-                                Količina: <input type="number" defaultValue="0"></input>
+                                Količina: <input type="number" defaultValue="0" onChange={this.handlePrice.bind(this)}></input>
+                            </div>
+                            <div className={styles.Price}>
+                                Cijena: {this.state.price} kn
                             </div>
                             <button className={styles.ShopNowBtn}>NARUČI</button>
                         </form>
